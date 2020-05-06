@@ -11,14 +11,21 @@ app.use(cors());
 
 
 app.get('/location', (req, res) => {
-    console.log('HELLO')
-    res.json({
+    try {
+        res.json({
+        
             "formatted_query": "Seattle, WA, USA",
             "latitude": "47.606210",
             "longitude": "-122.332071"
+        })
+    } catch (e) {
+        console.error(e);
+        res.json({
+            status: 500,
+            responseText: e,
         
-    });
-});
+        });
+};
 
 
 
